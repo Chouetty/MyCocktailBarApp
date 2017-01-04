@@ -12,6 +12,7 @@
 				<tr>
 					<th>Name</th>
 					<th>State</th>
+					<th />
 				</tr>
 			</thead>
 			<tbody>
@@ -19,14 +20,15 @@
 					<tr>
 						<td>${ingredient.name}</td>
 						<td>${ingredient.state}</td>
+						<td><a href="<c:url value='ingredients/delete/${ingredient.id}.html'/>">Delete</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 	</div>
 	<div
-		style="position: fixed; buttom: 0; padding: 20px; font-size: 18px;">
-		<a href="<c:url value='/'/>">Go back</a>
+		style="buttom: 0; padding: 20px; font-size: 18px;">
+		<a href="<c:url value='/'/>" class="btn btn-chimene">Go back</a>
 	</div>
 	<script type="text/javascript">
 		$('#ingredientsTable').DataTable({

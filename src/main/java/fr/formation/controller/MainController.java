@@ -1,8 +1,8 @@
 package fr.formation.controller;
 
-import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -18,24 +18,23 @@ public class MainController {
 	@Autowired
 	private MessageSource message;
 
+	private String getMessage(final String key) {
+		return this.message.getMessage(key, null, null);
+	}
+
 	@RequestMapping("/index")
 	public ModelAndView index() {
 		final ModelAndView mav = new ModelAndView();
 		mav.setViewName("index");
-		final List<String> menuKeys = Arrays.asList(
-				this.getMessage("menu.list").split(","));
+		final List<String> menuKeys = Arrays.asList(this.getMessage("menu.list").split(","));
 		final List<Menu> menus = new ArrayList<>();
-		for (final String menuKey : menuKeys){
-			final String prefix = "menu." + menuKey;
+		for (final String menuKey : menuKeys) {
+			final String prefix = "menu." + menuKey.trim();
 			final String title = this.getMessage(prefix + ".title");
 			final String url = this.getMessage(prefix + ".url");
 			menus.add(new Menu(title, url));
 		}
 		mav.getModel().put("menus", menus);
 		return mav;
-	}
-
-	private String getMessage(final String key) {
-		return this.message.getMessage(key, null, null);
 	}
 }

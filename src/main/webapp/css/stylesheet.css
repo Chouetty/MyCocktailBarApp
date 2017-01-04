@@ -2,6 +2,7 @@
    	font-family: cocktailbar;
     src: url(font/cocktailbar.ttf);
 }
+
 h1.body {
 	font-family: cocktailbar;
 	font-size:80px;
@@ -11,9 +12,19 @@ h1.body {
    	font-family: Ensure-Medium;
     src: url(font/Ensure-Medium.ttf);
 }
+
 .menu {
 	font-family: Ensure-Medium;
 	font-size:50px;
+}
+
+.fondblanc {
+	background-color: white;
+	opacity: 0.8;
+	padding-top: 10px;
+    padding-right: 5px;
+    padding-bottom: 2px;
+    padding-left: 5px;
 }
 
 body {
@@ -26,7 +37,6 @@ body {
 li{
 	list-style: url(img/Food-Cocktail-icon30x30.png);
 }
-
 
 .btn-chimene {
   background-color: hsl(312, 80%, 43%) !important;
@@ -45,3 +55,20 @@ li{
   -webkit-font-smoothing: antialiased;
 }
 
+.back {
+	position:fixed;
+	bottom:0;
+	left:0;
+	padding:20px;
+	font-size:18px;
+}
+
+.cocktail-details{
+	width: 30%;
+	float: left;
+}
+
+.cocktail-ingredients{
+	width: 70%;
+	float: right;
+}

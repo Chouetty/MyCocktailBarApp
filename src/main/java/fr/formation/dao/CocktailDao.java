@@ -5,8 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import fr.formation.entity.Cocktail;
 
-	@Repository
-	public interface CocktailDao extends JpaRepository <Cocktail, Integer>{
-		
-	}
+@Repository
+public interface CocktailDao extends JpaRepository<Cocktail, Integer> {
 
+}

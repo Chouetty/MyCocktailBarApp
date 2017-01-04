@@ -36,4 +36,19 @@
 			</basic>
 		</attributes>
 	</entity>
+	<entity class="fr.formation.entity.IngredientCocktail">
+		<table name="ingredientcocktail" />
+		<attributes>
+			<id name="id">
+				<generated-value strategy="IDENTITY" />
+			</id>
+			<basic name="quantity" />
+			<one-to-one name="cocktail">
+					<join-column name="cocktailId" />
+			</one-to-one>
+			<one-to-one name="ingredient">
+				<join-column name="ingredientId" />
+			</one-to-one>
+		</attributes>
+	</entity>
 </entity-mappings>

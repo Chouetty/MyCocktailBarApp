@@ -6,6 +6,7 @@
 <jsp:include page="header.jsp" />
 <body>
 	<c:url value="/cocktails/add.html" var="addUrl" />
+	<div class="container">
 	<h1><span class="menu">Add cocktail</span></h1>
 	<form action="${addUrl}" method="POST">
 		<div class="form-group">
@@ -21,8 +22,9 @@
 				<button class="btn btn-chimene">Submit</button>
 		</div>
 	</form>
+	</div>
 	<div
 		style="position: fixed; buttom: 0; padding: 20px; font-size: 18px;">
-		<a href="<c:url value='/'/>">Go back</a>
+		<a href="<c:url value='/'/>" class="btn btn-chimene">Go back</a>
 </body>
 </html>

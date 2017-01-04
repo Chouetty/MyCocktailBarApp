@@ -7,9 +7,11 @@
 <jsp:include page="header.jsp" />
 </head>
 <body>
-	<h1 class="body"><center>Welcome on the CocktailBar Application</center></h1>
+	<h1 class="body">
+		<center>Welcome on the CocktailBar Application</center>
+	</h1>
 	<div class="container">
-		<span class="menu">Choose Menu :</span>
+		<span class="menu fondblanc">Choose Menu :</span>
 		<ul>
 			<c:forEach items="${menus}" var="menu">
 				<div class="row">
