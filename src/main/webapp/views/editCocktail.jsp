@@ -35,9 +35,9 @@
 				<button class="btn btn-chimene">Submit</button>
 			</form:form>
 		</div>
-	</div>
 	<div class="cocktail-ingredients container">
 	<h1><span class="menu">Edit Ingredient List :</span></h1>
+	<form action="<c:url value='/cocktail/saveIngredients.html' />" method="POST">
 		<table id="cocktailIngredientsTable">
 			<thead>
 				<tr>
@@ -55,12 +55,14 @@
 						</c:url>
 						<tr>
 						<td>${ingredientCocktail.ingredient.name}</td>
-						<td><input type="number" min="0" value="${ingredientCocktail.quantity}"/></td>
+						<td><input name= "quantity_${ingredientCoktail.ingredient.id}" type="number" min="0" value="${ingredientCocktail.quantity}"/></td>
 						<td><a href="${removeUrl}">Delete</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
+		<button class="btn btn-chimene">Submit</button>
+		</form>
 		<form action="<c:url value='/cocktail/addIngredient.html'/>">
 		<select name="ingredientId">
 		<c:forEach items="${ingredients}" var="ingredient">
@@ -68,7 +70,7 @@
 		</c:forEach>
 		</select>
 		<button class="btn btn-chimene">Add</button>
-		<button class="btn btn-chimene">Submit</button>
+		</form>
 	</div>
 	<div
 		style="buttom: 0; padding: 20px; font-size: 18px;">

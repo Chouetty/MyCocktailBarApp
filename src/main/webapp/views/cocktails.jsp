@@ -11,7 +11,6 @@
 		<table id="cocktailsTable" class="table table-hover table-striped">
 			<thead>
 				<tr>
-					<th>Id</th>
 					<th>Name</th>
 					<th>Price</th>
 					<th>With Alcohol</th>
@@ -21,7 +20,6 @@
 			<tbody>
 				<c:forEach items="${cocktails}" var="cocktail">
 					<tr>
-						<td>${cocktail.id}</td>
 						<td>${cocktail.name}</td>
 						<td>${cocktail.price} €</td>
 						<td>${cocktail.withAlcohol}</td>

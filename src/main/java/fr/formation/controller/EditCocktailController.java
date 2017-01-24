@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,8 +55,12 @@ public class EditCocktailController {
 
 	@RequestMapping("/edit/{id}")
 	public ModelAndView edit(@PathVariable final Integer id) {
-		if (this.cocktailId != null && !this.cocktailId.equals(id)) {
+		if (this.cocktailId == null || !this.cocktailId.equals(id)) {
+			this.cocktailId = id;
 			this.ingredientCocktails = new ArrayList<>();
+			if (this.ingredientCocktails.isEmpty()) {
+				this.ingredientCocktails.addAll(this.cocktailService.getIngredientCocktail(this.cocktailId));
+			}
 		}
 		final ModelAndView mav = new ModelAndView();
 		mav.setViewName("editCocktail");
@@ -64,12 +69,8 @@ public class EditCocktailController {
 		} else {
 			final Cocktail cocktail = this.cocktailService.get(id);
 			mav.addObject("cocktail", cocktail);
-			this.cocktailId = cocktail.getId();
 		}
 
-		if (this.ingredientCocktails.isEmpty()) {
-			this.ingredientCocktails.addAll(this.cocktailService.getIngredientCocktail(this.cocktailId));
-		}
 		mav.addObject("ingredientCocktails", this.ingredientCocktails);
 		mav.addObject("ingredients", this.ingredientService.getAllByCocktail(this.ingredientCocktails));
 		return mav;
@@ -97,4 +98,16 @@ public class EditCocktailController {
 		}
 		return this.getForward();
 	}
+
+	@RequestMapping(value = "/saveIngredients", method = RequestMethod.POST)
+	public String saveIngredients(final HttpServletRequest request) {
+		this.ingredientCocktails.forEach((final IngredientCocktail ingredientCocktail) -> {
+			final int quantity = Integer
+					.parseInt(request.getParameter("quantity_" + ingredientCocktail.getIngredient().getId()));
+			ingredientCocktail.setQuantity(quantity);
+		});
+		this.cocktailService.updateIngredientCocktails(this.cocktailId, this.ingredientCocktails);
+		return "forward:/cocktails.html";
+	}
+
 }
